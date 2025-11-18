@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global eCommerce & IT Solutions | Future-Ready Technology Partner</title>
+    
+    <!-- Google Fonts: Poppins & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables for Easy Theming */
+        :root {
+            --primary-color: #1A365D; /* Deep Blue */
+            --secondary-color: #2B6CB0; /* Tech Blue */
+            --accent-color: #38B2AC; /* Teal */
+            --text-dark: #2D3748;
+            --text-light: #718096;
+            --bg-light: #F7FAFC;
+            --bg-white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --font-primary: 'Poppins', sans-serif; /* For Headings */
+            --font-secondary: 'Inter', sans-serif; /* For Body */
+            --container-width: 1200px;
+            --section-padding: 80px 20px;
+        }
+
+        /* --- Global Styles & Resets --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-white);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 1rem; }
+        h3 { font-size: 1.5rem; }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: var(--section-padding);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--bg-white);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+        }
+
+        /* --- Header --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: box-shadow 0.3s ease;
+        }
+        header.scrolled {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .contact-btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .contact-btn:hover {
+            background-color: #319795;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9), rgba(43, 108, 176, 0.1)), url('img/hero.jpeg') no-repeat center center/cover;
+            color: var(--bg-white);
+            display: flex;
+            align-items: center;
+            min-height: 90vh;
+            text-align: center;
+        }
+        #hero h1 {
+            font-size: 3.5rem;
+            color: var(--bg-white);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        #hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+        .hero-buttons {
+            animation: fadeInUp 1s ease-out 0.4s;
+            animation-fill-mode: both;
+        }
+        .hero-buttons .btn {
+            margin: 0 10px;
+        }
+        .btn-hero-secondary {
+            background-color: transparent;
+            color: var(--bg-white);
+            border: 2px solid var(--bg-white);
+        }
+        .btn-hero-secondary:hover {
+            background-color: var(--bg-white);
+            color: var(--primary-color);
+        }
+
+        /* --- Client Logos --- */
+        #clients {
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+        .client-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 70px;
+            margin-top: 3rem;
+            opacity: 0.6;
+        }
+        .client-logos img {
+            max-height: 40px;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+        .client-logos img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        /* --- Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+        .service-card {
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .service-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* --- Why Choose Us --- */
+        #why-choose-us {
+            background-color: var(--bg-light);
+        }
+        .why-choose-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        .why-choose-text ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        .why-choose-text li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .why-choose-text li i {
+            color: var(--accent-color);
+            margin-right: 15px;
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+        .why-choose-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* --- AI Expertise Section --- */
+        #ai-expertise {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-white);
+        }
+        #ai-expertise h2 { color: var(--bg-white); }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        .stat-item p {
+            font-size: 1.1rem;
+        }
+        
+        /* --- Testimonials --- */
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+        .testimonial-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .testimonial {
+            min-width: 100%;
+            padding: 0 50px;
+            text-align: center;
+        }
+        .testimonial blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        .testimonial cite {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .testimonial-controls {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .testimonial-controls button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        /* --- FAQ Section --- */
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+        .faq-item {
+            background-color: var(--bg-light);
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .faq-question {
+            width: 100%;
+            padding: 20px;
+            text-align: left;
+            border: none;
+            background: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 20px;
+        }
+        .faq-answer.active {
+            max-height: 500px; /* A large enough value */
+            padding: 0 20px 20px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--bg-light);
+            padding: 60px 0 20px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-column h3 {
+            color: var(--bg-white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        .footer-column a {
+            color: var(--bg-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-column a:hover {
+            color: var(--accent-color);
+        }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        /* --- Utility Classes --- */
+        .text-center { text-align: center; }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .nav-links, .contact-btn { display: none; }
+            .hamburger { display: flex; }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-white);
+                padding: 20px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            
+            .why-choose-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =================== HEADER =================== -->
+    <header id="main-header">
+        <nav class="container">
+            <a href="#" class="logo">TechCorp</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-choose-us">Why Us</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="contact-btn">Get a Quote</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- =================== HERO SECTION =================== -->
+        <section id="hero">
+            <div class="container">
+                <h1>Transforming Digital Commerce Globally</h1>
+                <p>We are your trusted, future-ready technology partner, building innovative and scalable digital solutions that drive growth and connect you to the world.</p>
+                <div class="hero-buttons">
+                    <a href="#solutions" class="btn btn-primary">Explore Our Solutions</a>
+                    <a href="#contact" class="btn btn-hero-secondary">Schedule Consultation</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== CLIENT LOGOS =================== -->
+        <section id="clients" class="section-padding">
+            <div class="container">
+                <h2 class="fade-in">Trusted by Global Leaders</h2>
+                <p class="text-center fade-in">We are proud to partner with industry-leading companies worldwide.</p>
+                <div class="client-logos fade-in">
+                    <div class="h-12 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-gray-400">Microsoft</span>
+                    </div>
+                    <div class="h-12 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-gray-400">Amazon</span>
+                    </div>
+                    <div class="h-12 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-gray-400">Google</span>
+                    </div>
+                    <div class="h-12 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-gray-400">Shopify</span>
+                    </div>
+                    <div class="h-12 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-gray-400">Meta</span>
+                    </div>
+                    <div class="h-12 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-gray-400">Adobe</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =================== OUR SERVICES =================== -->
+        <section id="services" class="section-padding">
+            <div class="container">
+                <h2 class="fade-in">Our Services</h2>
+                <p class="text-center fade-in">Comprehensive eCommerce and IT solutions tailored to your needs.</p>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>eCommerce Development</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque, sapien vel.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile App Solutions</h3>
+                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Integration</h3>
+                        <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI & Machine Learning</h3>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Cybersecurity</h3>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                    <div class="service-card fade-in">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Digital Transformation</h3>
+                        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis.</p>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== WHY CHOOSE US =================== -->
+        <section id="why-choose-us" class="section-padding">
+            <div class="container">
+                <h2 class="fade-in">Why Choose Us</h2>
+                <div class="why-choose-content">
+                    <div class="why-choose-image fade-in">
+                        <img src="img/teamwork.jpeg" alt="Why Choose Us">
+                    </div>
+                    <div class="why-choose-text fade-in">
+                        <p>We build more than just software; we build lasting partnerships based on trust, innovation, and measurable results.</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <span>Proven Expertise: 15+ years in global eCommerce and IT solutions.</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span>Client-Centric Approach: Your goals are our mission.</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span>Cutting-Edge Technology: We leverage the latest innovations for your success.</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span>24/7 Global Support: We're here for you, anytime, anywhere.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== AI POWERED EXPERTISE =================== -->
+        <section id="ai-expertise" class="section-padding">
+            <div class="container">
+                <h2 class="fade-in">AI-Powered Expertise</h2>
+                <p class="text-center fade-in">Harnessing the power of artificial intelligence to deliver unparalleled results.</p>
+                <div class="stats-grid">
+                    <div class="stat-item fade-in">
+                        <h3 class="stat-number" data-target="500">0</h3>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <h3 class="stat-number" data-target="98">0</h3>
+                        <p>Client Satisfaction %</p>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <h3 class="stat-number" data-target="50">0</h3>
+                        <p>AI Models Deployed</p>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <h3 class="stat-number" data-target="24">0</h3>
+                        <p>Global Awards</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- =================== TESTIMONIALS =================== -->
+        <section id="testimonials" class="section-padding">
+            <div class="container">
+                <h2 class="fade-in">What Our Clients Say</h2>
+                <div class="testimonial-slider fade-in">
+                    <div class="testimonial-wrapper" id="testimonial-wrapper">
+                        <div class="testimonial">
+                            <blockquote>"TechCorp transformed our online presence. Their expertise and dedication are unmatched. We saw a 200% increase in online sales within six months!"</blockquote>
+                            <cite>- Jane Doe, CEO of RetailGlobal</cite>
+                        </div>
+                        <div class="testimonial">
+                            <blockquote>"A true partner in innovation. The AI solution they built for us has streamlined our operations and saved us countless hours."</blockquote>
+                            <cite>- John Smith, CTO of Innovate Inc.</cite>
+                        </div>
+                        <div class="testimonial">
+                            <blockquote>"Professional, reliable, and results-driven. They handled our complex digital transformation with ease and excellence."</blockquote>
+                            <cite>- Emily White, Director of Digital at MegaCorp</cite>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-controls fade-in">
+                    <button id="prev-testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next-testimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== FAQ SECTION =================== -->
+        <section id="faq" class="section-padding">
+            <div class="container">
+                <h2 class="fade-in">Frequently Asked Questions</h2>
+                <div class="faq-container fade-in">
+                    <div class="faq-item">
+                        <button class="faq-question">What is your typical project timeline?</button>
+                        <div class="faq-answer">
+                            <p>Project timelines vary based on complexity and scope. A typical eCommerce website takes 3-6 months from discovery to launch, while custom enterprise solutions can take 6-12 months. We provide a detailed timeline during the proposal phase.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Do you provide ongoing support and maintenance?</button>
+                        <div class="faq-answer">
+                            <p>Yes, absolutely. We offer comprehensive support and maintenance packages to ensure your platform remains secure, up-to-date, and performs optimally. Our 24/7 global support team is always ready to assist you.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">Can you work with our existing team?</button>
+                        <div class="faq-answer">
+                            <p>Of course. We are adept at integrating with in-house teams, acting as a seamless extension of your workforce. We believe in collaborative partnerships to achieve the best outcomes.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">What industries do you specialize in?</button>
+                        <div class="faq-answer">
+                            <p>While we have experience across many sectors, we specialize in Retail, B2B, Manufacturing, Healthcare, and FinTech. Our solutions are tailored to meet the unique challenges and opportunities of each industry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== CONTACT FORM / CTA =================== -->
+        <section id="contact" class="section-padding" style="background-color: var(--bg-light);">
+            <div class="container">
+                <h2 class="fade-in">Let's Build Your Digital Future Together</h2>
+                <p class="text-center fade-in">Ready to start your next project? Get in touch with our experts today.</p>
+                <form class="fade-in" style="max-width: 700px; margin: 3rem auto 0; display: grid; gap: 20px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <input type="text" placeholder="Your Name" required style="padding: 15px; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem;">
+                        <input type="email" placeholder="Your Email" required style="padding: 15px; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem;">
+                    </div>
+                    <input type="text" placeholder="Subject" required style="padding: 15px; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem;">
+                    <textarea placeholder="Tell us about your project..." rows="6" required style="padding: 15px; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem; resize: vertical;"></textarea>
+                    <button type="submit" class="btn btn-primary" style="justify-self: center; padding: 15px 40px;">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- =================== FOOTER =================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TechCorp</h3>
+                    <p>Your trusted partner for global eCommerce development and digital solutions. Innovating for a better tomorrow.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#why-choose-us">Why Us</a></li>
+                        <li><a href="#case-studies">Case Studies</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@techcorp.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Innovation Drive, Tech City, TC 10101</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechCorp. All Rights Reserved. | <a href="#" style="color: var(--bg-light);">Privacy Policy</a> | <a href="#" style="color: var(--bg-light);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- Mobile Menu Toggle ---
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // --- Sticky Header on Scroll ---
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // --- Smooth Scrolling for Anchor Links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Close mobile menu if open
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // --- FAQ Accordion ---
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = question.classList.contains('active');
+
+                    // Close all other FAQs
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('active');
+                    });
+
+                    // Open clicked FAQ if it wasn't active
+                    if (!isActive) {
+                        question.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+
+            // --- Animated Counter for Stats ---
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const speed = 200; // The lower the faster
+
+            const runCounter = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(() => runCounter(counter), 10);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            // Intersection Observer for Counter Animation
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        runCounter(entry.target);
+                        observer.unobserve(entry.target); // Run only once
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statNumbers.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+
+            // --- Testimonial Slider ---
+            const testimonialWrapper = document.getElementById('testimonial-wrapper');
+            const testimonials = testimonialWrapper.querySelectorAll('.testimonial');
+            const prevBtn = document.getElementById('prev-testimonial');
+            const nextBtn = document.getElementById('next-testimonial');
+            let currentIndex = 0;
+
+            const showTestimonial = (index) => {
+                if (index < 0) {
+                    currentIndex = testimonials.length - 1;
+                } else if (index >= testimonials.length) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex = index;
+                }
+                const offset = -currentIndex * 100;
+                testimonialWrapper.style.transform = `translateX(${offset}%)`;
+            };
+
+            prevBtn.addEventListener('click', () => showTestimonial(currentIndex - 1));
+            nextBtn.addEventListener('click', () => showTestimonial(currentIndex + 1));
+            
+            // Auto-rotate slider
+            setInterval(() => {
+                showTestimonial(currentIndex + 1);
+            }, 5000); // Change every 5 seconds
+
+            // --- Fade-in Animation on Scroll ---
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(element => {
+                fadeObserver.observe(element);
+            });
+
+        });
+    </script>
+
+</body>
+</html>
